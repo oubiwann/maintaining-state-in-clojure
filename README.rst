@@ -23,7 +23,7 @@ Oldskool
 
 First we're going to take a look at XXX
 
-..code :: clojure
+..code:: clojure
 
     user=> (ns fake-obs (:require [state-examples.fake-objects :refer :all]))
     nil
