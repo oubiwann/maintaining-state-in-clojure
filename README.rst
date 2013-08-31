@@ -8,32 +8,50 @@ Background
 TBD
 
 
+Getting the Code
+================
+
+To play with the examples in this repo, you'll need to clone it to the machine
+that you're working on:
+
+.. code:: shell
+
+  $ git clone https://github.com/oubiwann/maintaining-state-in-clojure.git
+  $ cd maintaining-state-in-clojure
+
+
+Firing up the REPL
+==================
+
+.. code:: shell
+
+``lein`` is fantastic. We should all be using more of it :-) With the ``repl``
+command, you will be put into a shell where the code in your source files will
+be available:
+
+    $ lein repl
+
+If you don't have ``lein`` installed, you'll need to `download it`_.
+
+
 Examples
 ========
 
 TBD
 
 
-Getting the Code
-----------------
-
-TBD
-
-
-Firing up the REPL
+State via Closures
 ------------------
 
-.. code:: shell
+This example uses nested closures to 1) dispatch based upon a passed keyword,
+and 2) return a dispatched function that has access to the top-level function's
+variables as well as variables that are passed in to the nested functions.
 
-    $ lein repl
+This sort of construction provides some of the basic functionality of an object
+system (mostly just state data).
 
-
-Oldskool Objects via Closures
------------------------------
-
-First we're going to take a look at XXX
-
-Let's set up a working namespace in the REPL:
+Let's set up a working namespace in the REPL, and then we can see how this works
+in action:
 
 .. code:: clojure
 
@@ -62,8 +80,8 @@ new account object, and poke it a bit:
     1000
 
 If we call any functions that make any changes to state data, a new account
-object gets returned. As such, we'll need to reasign the new object to our
-account variable:
+object gets returned. As such, in those cases we'll need to reasign the new
+object to our account variable:
 
 .. code:: clojure
 
@@ -80,7 +98,7 @@ account variable:
     fake-obs=> (get-balance acc)
     1182.775
     fake-obs=> (withdraw acc 2000)
-    Exception Insufficient funds.  state-examples.fake-objects/new-account/fn--970/fn--974 (fake_objects.clj:19)
+    Exception : Insufficient funds.  state-examples.fake-objects/new-account/fn--970/fn--974 (fake_objects.clj:19)
 
 
 Using the object system in Clojure
@@ -99,3 +117,8 @@ Using Lieght-weight Processes
 -----------------------------
 
 TBD
+
+.. Links
+.. -----
+..
+.. _download it: https://github.com/technomancy/leiningen#installation

@@ -28,7 +28,7 @@
                       name
                       (- balance amt)
                       interest-rate)
-                    :else (throw (Exception. "Insufficient funds.")))))))
+                    :else (throw (Exception. ": Insufficient funds.")))))))
 
 (defn get-account-method [object command]
   (apply object [command]))
