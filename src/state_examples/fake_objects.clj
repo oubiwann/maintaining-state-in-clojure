@@ -1,3 +1,10 @@
+;; This file contains a conversion of an example in the LFE code base, that in
+;; turn was a conversion of some of the Common Lisp code from the beginning of
+;; Chapter 13 in Peter Norvig's "Paradigms of Artificial Intelligence
+;; Programming: Case Studies in Common Lisp".
+;;
+;; For example usage, see the README file.
+
 (ns state-examples.fake-objects)
 
 (defn new-account [name balance interest-rate]
