@@ -10,19 +10,19 @@
 (defn new-account [name balance interest-rate]
   (fn [message]
     (case message
-      "name" (fn [] name)
-      "balance" (fn [] balance)
-      "interest" (fn []
+      :name (fn [] name)
+      :balance (fn [] balance)
+      :interest (fn []
                    (new-account
                      name
                      (+ balance (* balance interest-rate))
                      interest-rate))
-      "deposit" (fn [amt]
+      :deposit (fn [amt]
                   (new-account
                     name
                     (+ balance amt)
                     interest-rate))
-      "withdraw" (fn [amt]
+      :withdraw (fn [amt]
                   (cond (<= amt balance)
                     (new-account
                       name
@@ -34,16 +34,16 @@
   (apply object [command]))
 
 (defn get-name [object]
-  (apply (get-account-method object "name") []))
+  (apply (get-account-method object :name) []))
 
 (defn get-balance [object]
-  (apply (get-account-method object "balance") []))
+  (apply (get-account-method object :balance) []))
 
 (defn apply-interest [object]
-  (apply (get-account-method object "interest") []))
+  (apply (get-account-method object :interest) []))
 
 (defn withdraw [object amt]
-  (apply (get-account-method object "withdraw") [amt]))
+  (apply (get-account-method object :withdraw) [amt]))
 
 (defn deposit [object amt]
-  (apply (get-account-method object "deposit") [amt]))
+  (apply (get-account-method object :deposit) [amt]))
