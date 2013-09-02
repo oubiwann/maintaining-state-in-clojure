@@ -52,7 +52,7 @@ variables as well as variables that are passed in to the nested functions.
 This sort of construction provides some of the basic functionality of an object
 system (mostly just state data).
 
-Here is a link to the `state-via-closures example code`_. Take a look, then
+Here is a link to the `state-via-closures example code`_ . Take a look, then
 let's set up a working namespace in the REPL, and then we can see how this
 works in action:
 
@@ -125,4 +125,4 @@ TBD
 .. -----
 ..
 .. _download it: https://github.com/technomancy/leiningen#installation
-.. _state-via-closures source code: src/state_examples/fake_objects.clj
+.. _state-via-closures example code: src/state_examples/fake_objects.clj
