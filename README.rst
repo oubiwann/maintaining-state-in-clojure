@@ -29,6 +29,8 @@ Firing up the REPL
 command, you will be put into a shell where the code in your source files will
 be available:
 
+.. code:: shell
+
     $ lein repl
 
 If you don't have ``lein`` installed, you'll need to `download it`_.
