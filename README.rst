@@ -116,8 +116,8 @@ Using Agents
 TBD
 
 
-Using Lieght-weight Processes
------------------------------
+Using Light-weight Processes
+----------------------------
 
 TBD
 
