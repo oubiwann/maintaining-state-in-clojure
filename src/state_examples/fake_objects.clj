@@ -3,7 +3,10 @@
 ;; Chapter 13 in Peter Norvig's "Paradigms of Artificial Intelligence
 ;; Programming: Case Studies in Common Lisp".
 ;;
-;; For example usage, see the README file.
+;; For example usage, see the README file, in particular:
+;;    https://github.com/oubiwann/maintaining-state-in-clojure#state-via-closures
+;;
+;; You may also view the unit tests for example usage.
 
 (ns state-examples.fake-objects)
 
