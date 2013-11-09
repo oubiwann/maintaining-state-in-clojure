@@ -8,7 +8,7 @@
 ;;
 ;; You may also view the unit tests for example usage.
 
-(ns state-examples.fake-objects)
+(ns state-examples.closures)
 
 (defn new-account [name balance interest-rate]
   (fn [message]
