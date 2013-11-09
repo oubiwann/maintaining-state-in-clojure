@@ -4,6 +4,7 @@
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.5.1"]]
+  :plugins [[lein-exec "0.3.1"]]
   :profiles {
     :dev {
       :dependencies [[org.clojure/tools.namespace "0.2.3"]
