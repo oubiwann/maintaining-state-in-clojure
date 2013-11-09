@@ -33,13 +33,15 @@ be available:
 
     $ lein repl
 
-If you don't have ``lein`` installed, you'll need to `download it`_.
+If you don't have it installed, you'll need to `download lein`_.
 
 
 Examples
 ========
 
-TBD
+All of the examples below are adapted from an example given by Peter Norvig in
+Chapter 13 of his famous Lisp book, `PAIP`_. The `Chapter 13 PAIP source code`_
+is available online at the `Peter Norvig site`_.
 
 
 State via Closures
@@ -124,5 +126,8 @@ TBD
 .. Links
 .. -----
 ..
-.. _download it: https://github.com/technomancy/leiningen#installation
+.. _download lein: https://github.com/technomancy/leiningen#installation
 .. _state-via-closures example code: src/state_examples/fake_objects.clj
+.. _PAIP: http://www.amazon.com/dp/B003VWBY1I/
+.. _Chapter 13 PAIP source code: http://norvig.com/paip/clos.lisp
+.. _Peter Norvig site: http://norvig.com/
