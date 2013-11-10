@@ -44,12 +44,18 @@ Chapter 13 of his famous Lisp book, `PAIP`_. The `Chapter 13 PAIP source code`_
 is available online at the `Peter Norvig site`_.
 
 
-State via Closures
-------------------
+Using Closures
+--------------
 
-This example uses nested closures to 1) dispatch based upon a passed keyword,
-and 2) return a dispatched function that has access to the top-level function's
-variables as well as variables that are passed in to the nested functions.
+Once upon a time (before CLOS), if you wanted to maintain state in Lisp, you
+used closures. As a nod to this savory history, we start with a closure example.
+
+This example uses nested closures to:
+
+#. dispatch based upon a passed keyword, and
+
+#. return a dispatched function that has access to the top-level function's
+   variables as well as variables that are passed in to the nested functions.
 
 This sort of construction provides some of the basic functionality of an object
 system (mostly just state data).
@@ -60,7 +66,7 @@ works in action:
 
 .. code:: clojure
 
-    user=> (ns fake-obs (:require [state-examples.fake-objects :refer :all]))
+    user=> (ns closures (:require [state-examples.closures :refer :all]))
     nil
 
 If you want to play with the code and made changes, you can use the ``:reload``
@@ -68,7 +74,7 @@ keyword:
 
 .. code:: clojure
 
-    user=> (ns fake-obs (:require [state-examples.fake-objects :refer :all] :reload))
+    user=> (ns closures (:require [state-examples.closures :refer :all] :reload))
     nil
 
 We've got a REPL namespace, with all of the functions available in this
@@ -77,11 +83,11 @@ new account object, and poke it a bit:
 
 .. code:: clojure
 
-    fake-obs=> (def acc (new-account "savings" 1000 0.05))
-    #'fake-obs/acc
-    fake-obs=> (get-name acc)
+    closures=> (def acc (new-account "savings" 1000 0.05))
+    #'closures/acc
+    closures=> (get-name acc)
     "savings"
-    fake-obs=> (get-balance acc)
+    closures=> (get-balance acc)
     1000
 
 If we call any functions that make any changes to state data, a new account
@@ -90,24 +96,24 @@ object to our account variable:
 
 .. code:: clojure
 
-    fake-obs=> (def acc (deposit acc 150.50))
-    #'fake-obs/acc
-    fake-obs=> (get-balance acc)
+    closures=> (def acc (deposit acc 150.50))
+    #'closures/acc
+    closures=> (get-balance acc)
     1150.5
-    fake-obs=> (def acc (apply-interest acc))
-    #'fake-obs/acc
-    fake-obs=> (get-balance acc)
+    closures=> (def acc (apply-interest acc))
+    #'closures/acc
+    closures=> (get-balance acc)
     1208.025
-    fake-obs=> (def acc (withdraw acc 25.25))
-    #'fake-obs/acc
-    fake-obs=> (get-balance acc)
+    closures=> (def acc (withdraw acc 25.25))
+    #'closures/acc
+    closures=> (get-balance acc)
     1182.775
-    fake-obs=> (withdraw acc 2000)
-    Exception : Insufficient funds.  state-examples.fake-objects/new-account/fn--970/fn--974 (fake_objects.clj:19)
+    closures=> (withdraw acc 2000)
+    Exception : Insufficient funds.  state-examples.closures/new-account/fn--1253/fn--1263 (closures.clj:29)
 
 
-Using the object system in Clojure
-----------------------------------
+Using Protocols and Records
+---------------------------
 
 TBD
 
