@@ -2,6 +2,9 @@
 Maintaining State in Clojure
 ############################
 
+.. contents:: Table of Contents
+
+
 Background
 ==========
 
