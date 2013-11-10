@@ -144,6 +144,8 @@ allows us to use it just like we did the previous example. The functions,
 instead of extracting info from nested closures, simple operate on the
 provided data structure.
 
+Here is a link to the `state-via-data-structures example code`_.
+
 .. code:: clojure
 
     user=> (ns data (:require [state-examples.data :refer :all]))
@@ -203,6 +205,8 @@ Note that the methods we define (in the example's source code where `defrecord`
 is called) are available in the namespace once we do our import and the
 interface + class is compiled.
 
+Here is a link to the `state-via-protocols example code`_.
+
 .. code:: clojure
 
     data=> (def acc (Account. "savings" 1000 0.05))
@@ -243,11 +247,17 @@ Using Light-weight Processes
 
 TBD
 
+
 .. Links
 .. -----
 ..
 .. _download lein: https://github.com/technomancy/leiningen#installation
-.. _state-via-closures example code: src/state_examples/fake_objects.clj
+.. _state-via-closures example code: src/state_examples/closures.clj
+.. _state-via-data-structures example code: src/state_examples/data.clj
+.. _state-via-protocols example code: src/state_examples/protocols.clj
+.. _state-via-agents example code: src/state_examples/agents.clj
+.. _state-via-processes example code: src/state_examples/processes.clj
+.. _state-via-monads example code: src/state_examples/monads.clj
 .. _PAIP: http://www.amazon.com/dp/B003VWBY1I/
 .. _Chapter 13 PAIP source code: http://norvig.com/paip/clos.lisp
 .. _Peter Norvig site: http://norvig.com/
