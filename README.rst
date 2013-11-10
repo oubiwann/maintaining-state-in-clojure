@@ -183,6 +183,8 @@ Here is the usage (again, we've set things up so it's the same as above):
 
 And now for some operations on our data:
 
+.. code:: clojure
+
     data=> (def acc (deposit acc 150.50))
     #'data/acc
     data=> (get-balance acc)
