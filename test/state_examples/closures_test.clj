@@ -7,7 +7,7 @@
   (let [account (closures/new-account "savings" 1000 0.05)]
     (testing "check account name"
       (is (= "savings" (closures/get-name account))))
-    (testing "heck account balance"
+    (testing "check account balance"
       (is (= 1000 (closures/get-balance account))))
     (testing "check account interest"
       (is (= 1050.0 (closures/get-balance (closures/apply-interest account)))))
