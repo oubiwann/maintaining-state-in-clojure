@@ -39,7 +39,7 @@ If you don't have it installed, you'll need to `download lein`_.
 Examples
 ========
 
-All of the examples below are adapted from an example given by Peter Norvig in
+Most of the examples below are adapted from an example given by Peter Norvig in
 Chapter 13 of his famous Lisp book, `PAIP`_. The `Chapter 13 PAIP source code`_
 is available online at the `Peter Norvig site`_.
 
@@ -159,7 +159,44 @@ Let's walk through the same steps:
 Using Protocols and Records
 ---------------------------
 
-TBD
+We now take a look at Clojure's wrapping around Java interfaces and classes as
+a means of maintaining state. We're using ``defrecord``, which generates a Java
+class behind the scenes. As such, we need to call ``ns`` with an ``:import`` if
+we want to actually use this in our code:
+
+.. code:: clojure
+
+    user=> (ns data (:require [state-examples.protocols :refer :all])
+      #_=> (:import [state_examples.protocols Account]))
+    nil
+
+Here is the usage (again, we've set things up so it's the same as above):
+
+.. code:: clojure
+
+    data=> (def acc (Account. "savings" 1000 0.05))
+    #'data/acc
+    data=> (get-name acc)
+    "savings"
+    data=> (get-balance acc)
+    1000
+
+And now for some operations on our data:
+
+    data=> (def acc (deposit acc 150.50))
+    #'data/acc
+    data=> (get-balance acc)
+    1150.5
+    data=> (def acc (apply-interest acc))
+    #'data/acc
+    data=> (get-balance acc)
+    1208.025
+    data=> (def acc (withdraw acc 25.25))
+    #'data/acc
+    data=> (get-balance acc)
+    1182.775
+    data=> (withdraw acc 2000)
+    Exception : Insufficient funds.  state-examples.protocols.Account (protocols.clj:23)
 
 
 Using Agents
