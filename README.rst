@@ -112,6 +112,50 @@ object to our account variable:
     Exception : Insufficient funds.  state-examples.closures/new-account/fn--1253/fn--1263 (closures.clj:29)
 
 
+Data Structures as a Counter Example
+------------------------------------
+
+Most of these examples are using fairly elaborate means of doing something quite
+simple: tracking data. What simpler way to do that than a data structure? None,
+that's what way.
+
+.. code:: clojure
+
+    user=> (ns data (:require [state-examples.data :refer :all]))
+    nil
+
+For this example, we've used an identical set of functions as the closures
+example, with no fancy-pants. Just data. We'll start it off like we did before:
+
+.. code:: clojure
+
+    data=> (def acc (new-account "savings" 1000 0.05))
+    #'data/acc
+    data=> (get-name acc)
+    "savings"
+    data=> (get-balance acc)
+    1000
+
+Let's walk through the same steps:
+
+.. code:: clojure
+
+    data=> (def acc (deposit acc 150.50))
+    #'data/acc
+    data=> (get-balance acc)
+    1150.5
+    data=> (def acc (apply-interest acc))
+    #'data/acc
+    data=> (get-balance acc)
+    1208.025
+    data=> (def acc (withdraw acc 25.25))
+    #'data/acc
+    data=> (get-balance acc)
+    1182.775
+    data=> (withdraw acc 2000)
+    Exception : Insufficient funds.  state-examples.data/withdraw (data.clj:27)
+
+
 Using Protocols and Records
 ---------------------------
 
