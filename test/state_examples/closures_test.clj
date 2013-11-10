@@ -14,6 +14,9 @@
     (testing "check account withdraw"
       (is (= 860 (closures/get-balance (closures/withdraw account 140)))))
     (testing "check account over-withdraw"
-      (is (thrown? java.lang.Exception (closures/withdraw account 1000.01))))
+      (is (thrown-with-msg?
+            java.lang.Exception
+            #"Insufficient funds"
+            (closures/withdraw account 1000.01))))
     (testing "check account deposit"
       (is (= 3500 (closures/get-balance (closures/deposit account 2500)))))))
