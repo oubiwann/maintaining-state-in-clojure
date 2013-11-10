@@ -5,7 +5,19 @@ Maintaining State in Clojure
 Background
 ==========
 
-TBD
+Learning how to work with state in such a way as fits the language of one's
+choice is often a very interesting exercise. Handling state poorly leads to
+excessive sweating, heart palpitations, blurred vision, and loss of hair.
+Handling state well leads to properly functioning programs and all the wonders
+of a life filled with such programs.
+
+Besides the utilitarian reasons, it's actually a fun problem space to explore,
+since different languages often have widely diverging features that allow one
+to maintain state in all sorts of unique ways.
+
+The examples in this repo explore some of this, from the perspective of Clojure.
+
+Enjoy!
 
 
 Getting the Code
