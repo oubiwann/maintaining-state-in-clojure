@@ -138,6 +138,12 @@ Most of these examples are using fairly elaborate means of doing something quite
 simple: tracking data. What simpler way to do that than a data structure? None,
 that's what way.
 
+
+This example provides a convenience function which creates a simple map. This
+allows us to use it just like we did the previous example. The functions,
+instead of extracting info from nested closures, simple operate on the
+provided data structure.
+
 .. code:: clojure
 
     user=> (ns data (:require [state-examples.data :refer :all]))
@@ -189,7 +195,13 @@ we want to actually use this in our code:
       #_=> (:import [state_examples.protocols Account]))
     nil
 
-Here is the usage (again, we've set things up so it's the same as above):
+Again, we've set things up so that the usage is almost identical to the
+previous examples. The only difference is an actual object instantiation with
+a call to ``Account.``.
+
+Note that the methods we define (in the example's source code where `defrecord`
+is called) are available in the namespace once we do our import and the
+interface + class is compiled.
 
 .. code:: clojure
 
