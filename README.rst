@@ -23,8 +23,12 @@ The examples in this repo explore some of this, from the perspective of Clojure.
 Enjoy!
 
 
+Preparations
+============
+
+
 Getting the Code
-================
+----------------
 
 To play with the examples in this repo, you'll need to clone it to the machine
 that you're working on:
@@ -36,7 +40,7 @@ that you're working on:
 
 
 Firing up the REPL
-==================
+------------------
 
 .. code:: shell
 
