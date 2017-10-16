@@ -14,7 +14,12 @@ explore, since different languages often have widely diverging features that
 allow one to maintain state in all sorts of unique ways.
 
 The examples in this repo explore some of this, from the perspective of
-Clojure.
+Clojure. They include:
+
+* Using closures
+* Using a data structure
+* Using Clojure protocols
+* Using `core.async` channels
 
 Enjoy!
 
@@ -195,8 +200,38 @@ Exception : Insufficient funds.  state-examples.protocols.Account (protocols.clj
 
 ### Using `core.async` Channels
 
-TBD
+This example is a completely different animal ... on the surface.
+Generalizing to core concepts, this is very simiilar to using closures.
 
+Here is a link to the [state-via-channels example code][channels].
+
+```clj
+state-examples.dev=> (def acc (channels/new-account "savings" 1000 0.05))
+#'state-examples.dev/acc
+state-examples.dev=> (channels/get-name acc)
+"savings"
+state-examples.dev=> (channels/get-balance acc)
+1000
+```
+
+Let's walk through the same steps as the other examples:
+
+```clj
+state-examples.dev=> (channels/deposit acc 150.50)
+:ok
+state-examples.dev=> (channels/get-balance acc)
+1150.5
+state-examples.dev=> (channels/apply-interest acc)
+:ok
+state-examples.dev=> (channels/get-balance acc)
+1208.025
+state-examples.dev=> (channels/withdraw acc 25.25)
+:ok
+state-examples.dev=> (channels/get-balance acc)
+1182.775
+state-examples.dev=> (channels/withdraw acc 2000)
+:insufficient-funds
+```
 
 
 [lein-dl]: https://github.com/technomancy/leiningen#installation

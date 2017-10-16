@@ -4,7 +4,9 @@
   :license {
     :name "Apache License, Version 2.0"
     :url "http://www.apache.org/licenses/LICENSE-2.0"}
-  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :dependencies [
+    [org.clojure/clojure "1.8.0"]
+    [org.clojure/core.async "0.3.443"]]
   :plugins [[lein-exec "0.3.6"]]
   :profiles {
     :dev {
