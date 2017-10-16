@@ -1,10 +1,9 @@
 (ns state-examples.protocols-test
   (:require [clojure.test :refer :all]
-            [state-examples.protocols :as protocols])
-  (:import [state_examples.protocols Account]))
+            [state-examples.protocols :as protocols]))
 
 (deftest test-account
-  (let [account (protocols/Account. "savings" 1000 0.05)]
+  (let [account (protocols/new-account "savings" 1000 0.05)]
     (testing "check account name"
       (is (= "savings" (protocols/get-name account))))
     (testing "check account balance"
