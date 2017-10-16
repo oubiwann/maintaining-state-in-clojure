@@ -1,17 +1,30 @@
 # Maintaining State in Clojure
 
 
+## Caveat
+
+These examples are here to help those new to Clojure in establishing
+analogies with other languages (or Lisp dialects). Please keep in mind
+the travesties committed in the majority of object-oriented software over
+the decades since the 80s: data and behaviour should not be conflated.
+
+To put a finer point on this, if you are looking for proper design patterns
+for working with state in Clojure applications, be sure to purchase any
+number of the Clojure books dedicated to real-world applications. Please do
+not treat this project as an application reference.
+
+This is an old repo, but since it comes up in search results, I try to keep
+it updated.
+
+
 ## Background
 
 Learning how to work with state in such a way as fits the language of one's
-choice is often a very interesting exercise. Handling state poorly leads to
-excessive sweating, heart palpitations, blurred vision, and loss of hair.
-Handling state well leads to properly functioning programs and all the
-wonders of a life filled with such programs.
+choice is critical for building production-ready applications.
 
-Besides the utilitarian reasons, it's actually a fun problem space to
-explore, since different languages often have widely diverging features that
-allow one to maintain state in all sorts of unique ways.
+Learning how to _play_ with state in different ways is actually a fun topic
+of exploration. Different languages often have widely diverging features
+that allow one to maintain state in all sorts of unique ways.
 
 The examples in this repo explore some of this, from the perspective of
 Clojure. They include:
