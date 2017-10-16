@@ -1,4 +1,4 @@
-(defproject state-examples "0.1.0-SNAPSHOT"
+(defproject state-examples "0.2.0-SNAPSHOT"
   :description "Examples for working with state data in Clojure"
   :url "https://github.com/oubiwann/maintaining-state-in-clojure"
   :license {
