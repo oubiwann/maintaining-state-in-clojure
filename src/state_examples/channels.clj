@@ -28,6 +28,17 @@
   (async/>!! client {:result :ok})
   (assoc data :balance (+ (:balance data) amt)))
 
+(defn dispatch-send
+  ([data client cmd]
+    (dispatch-send data client cmd nil))
+  ([data client cmd amount]
+    (case cmd
+      :name (send-name data client)
+      :balance (send-balance data client)
+      :apply-interest (send-apply-interest data client)
+      :withdraw (send-withdrawl data client amount)
+      :deposit (send-deposit data client amount))))
+
 (defn new-account [name balance interest-rate]
   (let [ch (async/chan)
         data {:name name
@@ -36,14 +47,8 @@
     (async/go
       (loop [d data]
         (when-let [msg (async/<! ch)]
-          (recur (case (:cmd msg)
-                   :name (send-name d (:client msg))
-                   :balance (send-balance d (:client msg))
-                   :apply-interest (send-apply-interest d (:client msg))
-                   :withdraw (send-withdrawl
-                              d (:client msg) (:amount msg))
-                   :deposit (send-deposit
-                             d (:client msg) (:amount msg)))))))
+          (recur (dispatch-send
+                  d (:client msg) (:cmd msg) (:amount msg))))))
     ch))
 
 (defn make-call
