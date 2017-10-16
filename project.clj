@@ -1,13 +1,34 @@
 (defproject state-examples "0.1.0-SNAPSHOT"
   :description "Examples for working with state data in Clojure"
   :url "https://github.com/oubiwann/maintaining-state-in-clojure"
-  :license {:name "Apache License, Version 2.0"
-            :url "http://www.apache.org/licenses/LICENSE-2.0"}
-  :dependencies [[org.clojure/clojure "1.5.1"]]
-  :plugins [[lein-exec "0.3.1"]]
+  :license {
+    :name "Apache License, Version 2.0"
+    :url "http://www.apache.org/licenses/LICENSE-2.0"}
+  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :plugins [[lein-exec "0.3.6"]]
   :profiles {
     :dev {
-      :dependencies [[org.clojure/tools.namespace "0.2.3"]
-                     [org.clojure/java.classpath "0.2.0"]]}
-    :testing {
-      :dependencies [[leiningen "2.3.3"]]}})
+      :dependencies [
+        [org.clojure/tools.namespace "0.2.10"]]}
+    :test {
+      :exclusions [org.clojure/clojure]
+      :plugins [
+        [jonase/eastwood "0.2.5"]
+        [lein-ancient "0.6.12"]
+        [lein-bikeshed "0.5.0"]
+        [lein-kibit "0.1.5"]
+        [lein-shell "0.5.0"]
+        [venantius/yagni "0.1.4"]]}}
+  :aliases {
+    "check-deps" [
+      "with-profile" "+test" "ancient" "check" ":all"]
+    "kibit" [
+      "with-profile" "+test" "do"
+        ["shell" "echo" "== Kibit =="]
+        ["kibit"]]
+    "outlaw" [
+      "with-profile" "+test"
+      "eastwood" "{:namespaces [:source-paths] :source-paths [\"src\"]}"]
+    "lint" [
+      "with-profile" "+test" "do"
+        ["check"] ["kibit"] ["outlaw"]]})
