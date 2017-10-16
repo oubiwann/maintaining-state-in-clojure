@@ -30,3 +30,6 @@
       this
       {:balance (+ (:balance this) amt)})))
 
+(defn new-account
+  [name balance interest-rate]
+  (->Account name balance interest-rate))
