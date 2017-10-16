@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [state-examples.version :as version]))
 
-
 (deftest test-version
   (is (= 0 (version/version :major)))
   (is (= 1 (version/version :minor)))

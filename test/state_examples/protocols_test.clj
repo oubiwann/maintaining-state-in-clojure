@@ -3,7 +3,6 @@
             [state-examples.protocols :as protocols])
   (:import [state_examples.protocols Account]))
 
-
 (deftest test-account
   (let [account (protocols/Account. "savings" 1000 0.05)]
     (testing "check account name"

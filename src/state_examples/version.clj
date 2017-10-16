@@ -1,6 +1,5 @@
 (ns state-examples.version)
 
-
 (def version {:major 0
               :minor 1
               :patch 0

@@ -2,7 +2,6 @@
   (:require [clojure.test :refer :all]
             [state-examples.closures :as closures]))
 
-
 (deftest test-account
   (let [account (closures/new-account "savings" 1000 0.05)]
     (testing "check account name"

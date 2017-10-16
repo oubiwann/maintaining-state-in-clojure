@@ -7,7 +7,6 @@
 ;;    https://github.com/oubiwann/maintaining-state-in-clojure#state-via-closures
 ;;
 ;; You may also view the unit tests for example usage.
-
 (ns state-examples.closures)
 
 (defn new-account [name balance interest-rate]
