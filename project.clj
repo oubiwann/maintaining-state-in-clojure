@@ -8,6 +8,9 @@
   :plugins [[lein-exec "0.3.6"]]
   :profiles {
     :dev {
+      :source-paths ["dev-resources/src"]
+      :repl-options {
+        :init-ns state-examples.dev}
       :dependencies [
         [org.clojure/tools.namespace "0.2.10"]]}
     :test {
