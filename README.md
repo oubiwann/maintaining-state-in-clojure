@@ -57,11 +57,26 @@ $ cd maintaining-state-in-clojure
 
 ### Firing up the REPL
 
+If you don't have `lein` installed, you'll need to [download it][lein-dl]. When
+`lein` is on your system, make sure you're in the cloned directory for this
+repository and start up the REPL:
+
 ```
+$ cd maintaining-state-in-clojure
 $ lein repl
+
+state-examples.dev=>
 ```
 
-If you don't have `lein` installed, you'll need to [download it][lein-dl].
+At this point, you will have access to the following, which referencce the
+namespaces of the different examples in this repository:
+
+* `channels`
+* `closures`
+* `data`
+* `protocols`
+
+We will use each of these below.
 
 
 ## Examples
@@ -192,13 +207,8 @@ state-examples.dev=> (protocols/get-balance acc)
 
 And now for some operations on our data:
 
+
 ```clj
-state-examples.dev=> (def acc (protocols/new-account "savings" 1000 0.05))
-#'state-examples.dev/acc
-state-examples.dev=> (protocols/get-name acc)
-"savings"
-state-examples.dev=> (protocols/get-balance acc)
-1000
 state-examples.dev=> (def acc (protocols/deposit acc 150.50))
 #'state-examples.dev/acc
 state-examples.dev=> (protocols/get-balance acc)
