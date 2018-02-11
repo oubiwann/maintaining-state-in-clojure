@@ -127,8 +127,10 @@ structure? None, that's what way.
 
 This example provides a convenience function which creates a simple map. This
 allows us to use it just like we did the previous example. The functions,
-instead of extracting info from nested closures, simple operate on the
+instead of extracting info from nested closures, simply operate on the
 provided data structure.
+
+Note that this approach is not thread-safe.
 
 Here is a link to the [state-via-data-structures example code][data].
 
