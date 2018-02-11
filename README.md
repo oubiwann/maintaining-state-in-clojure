@@ -13,6 +13,10 @@ for working with state in Clojure applications, be sure to purchase any
 number of the Clojure books dedicated to real-world applications. Please do
 not treat this project as an application reference.
 
+One note on real-world applications: I highly recommend Stuart Sierra's
+[component library][component] for separating your apps into components
+and sharing only that state which each needs between components.
+
 This is an old repo, but since it comes up in search results, I try to keep
 it updated.
 
@@ -257,3 +261,4 @@ state-examples.dev=> (channels/withdraw acc 2000)
 [paip]: http://www.amazon.com/dp/B003VWBY1I/
 [paip-ch13]: http://norvig.com/paip/clos.lisp
 [norvig-site]: http://norvig.com/
+[component]: https://github.com/stuartsierra/component
