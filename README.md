@@ -254,4 +254,4 @@ state-examples.dev=> (channels/withdraw acc 2000)
 [channels]: src/state_examples/channels.clj
 [paip]: http://www.amazon.com/dp/B003VWBY1I/
 [paip-ch13]: http://norvig.com/paip/clos.lisp
-[norvig]: http://norvig.com/
+[norvig-site]: http://norvig.com/
