@@ -1,21 +1,38 @@
 (ns state-examples.channels
   (:require [clojure.core.async :as async]))
 
-(defn send-name [data client]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;   Utility & Convenience Functions   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn- make-call
+  ([acc-ch cmd]
+    (make-call acc-ch cmd nil))
+  ([acc-ch cmd amount]
+    (let [client-ch (async/chan)]
+      (async/>!! acc-ch {:client client-ch :cmd cmd :amount amount})
+      (when-let [msg (async/<!! client-ch)]
+        (:result msg)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;   Private, Message-passing Functions   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn- send-name [data client]
   (async/>!! client {:result (:name data)})
   data)
 
-(defn send-balance [data client]
+(defn- send-balance [data client]
   (async/>!! client {:result (:balance data)})
   data)
 
-(defn send-apply-interest [data client]
+(defn- send-apply-interest [data client]
   (let [balance (:balance data)
         interest-rate (:interest-rate data)]
     (async/>!! client {:result :ok})
     (assoc data :balance (+ balance (* balance interest-rate)))))
 
-(defn send-withdrawl [data client amt]
+(defn- send-withdrawl [data client amt]
   (if (<= amt (:balance data))
     (do
       (async/>!! client {:result :ok})
@@ -24,11 +41,11 @@
       (async/>!! client {:result :insufficient-funds})
       data)))
 
-(defn send-deposit [data client amt]
+(defn- send-deposit [data client amt]
   (async/>!! client {:result :ok})
   (assoc data :balance (+ (:balance data) amt)))
 
-(defn dispatch-send
+(defn- dispatch-send
   ([data client cmd]
     (dispatch-send data client cmd nil))
   ([data client cmd amount]
@@ -38,6 +55,10 @@
       :apply-interest (send-apply-interest data client)
       :withdraw (send-withdrawl data client amount)
       :deposit (send-deposit data client amount))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;   API   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn new-account [name balance interest-rate]
   (let [ch (async/chan)
@@ -50,15 +71,6 @@
           (recur (dispatch-send
                   d (:client msg) (:cmd msg) (:amount msg))))))
     ch))
-
-(defn make-call
-  ([acc-ch cmd]
-    (make-call acc-ch cmd nil))
-  ([acc-ch cmd amount]
-    (let [client-ch (async/chan)]
-      (async/>!! acc-ch {:client client-ch :cmd cmd :amount amount})
-      (when-let [msg (async/<!! client-ch)]
-        (:result msg)))))
 
 (defn get-name [acc-ch]
   (make-call acc-ch :name))
